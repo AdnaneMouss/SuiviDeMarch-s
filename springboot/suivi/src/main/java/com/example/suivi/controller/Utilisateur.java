@@ -1,4 +1,4 @@
-package com.example.suivi.model;
+package com.example.suivi.controller;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -13,10 +13,10 @@ public class Utilisateur {
     private String gsm;
     private String type;
 
-    @OneToMany(mappedBy = "proposePar")
+    @OneToMany(mappedBy = "proposePar", fetch = FetchType.EAGER)
     private List<Projet> projetsProposes;
 
-    @OneToMany(mappedBy = "approuvePar")
+    @OneToMany(mappedBy = "approuvePar", fetch = FetchType.EAGER)
     private List<Projet> projetsApprouves;
 
     @OneToMany(mappedBy = "utilisateur")

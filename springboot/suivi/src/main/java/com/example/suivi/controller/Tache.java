@@ -1,4 +1,4 @@
-package com.example.suivi.model;
+package com.example.suivi.controller;
 import jakarta.persistence.*;
 
 @Entity

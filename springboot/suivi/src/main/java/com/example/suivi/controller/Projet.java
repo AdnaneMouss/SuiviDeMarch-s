@@ -1,4 +1,4 @@
-package com.example.suivi.model;
+package com.example.suivi.controller;
 import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -22,7 +22,7 @@ public class Projet {
     @JoinColumn(name = "approuve_par_id")
     private Utilisateur approuvePar;
 
-    @OneToMany(mappedBy = "projet")
+    @OneToMany(mappedBy = "projet", fetch = FetchType.EAGER)
     private List<Tache> taches;
 
     public Projet(int id, Date dateDebut, Date dateFin, String etat, String titre, Double budget, Utilisateur proposePar, Utilisateur approuvePar, List<Tache> taches) {
