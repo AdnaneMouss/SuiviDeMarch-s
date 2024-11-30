@@ -5,8 +5,7 @@ import { HttpClientModule } from '@angular/common/http'; // Import HttpClientMod
 @Component({
   selector: 'app-root',
   template: `<h1>{{ message }}</h1>`,
-  standalone: true,
-  imports: [HttpClientModule]  // Import HttpClientModule here for standalone components
+  standalone: true, // Import HttpClientModule here for standalone components
 })
 export class AppComponent implements OnInit {
   message: string = '';

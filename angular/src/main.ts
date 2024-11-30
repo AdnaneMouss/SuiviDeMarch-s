@@ -1,16 +1,12 @@
-import { enableProdMode } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideHttpClient, withFetch } from '@angular/common/http';
 import { AppComponent } from './app/app.component';
-import { routes } from './app/app.routes';
-import { environment } from './environments/environment'; // Add this import
-
-if (environment.production) {
-  enableProdMode();
-}
+import { provideHttpClient } from '@angular/common/http';
+import { importProvidersFrom } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideHttpClient(withFetch()),  // Enable fetch for HTTPClient
+    provideHttpClient(),
+    importProvidersFrom(FormsModule), // Include other providers if necessary
   ],
-}).catch(err => console.error(err));
+}).catch((err) => console.error(err));
