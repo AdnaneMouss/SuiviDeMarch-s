@@ -1,4 +1,4 @@
-package com.example.suivi.controller;
+package com.example.suivi.model;
 import jakarta.persistence.*;
 
 @Entity
@@ -85,4 +85,6 @@ public class Tache {
     public void setUtilisateur(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
     }
+
+
 }

@@ -1,4 +1,4 @@
-package com.example.suivi.controller;
+package com.example.suivi.model;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -107,4 +107,5 @@ public class Utilisateur {
     public void setId(int id) {
         this.id = id;
     }
+
 }

@@ -1,10 +1,10 @@
-package com.example.suivi.controller;
+package com.example.suivi.model;
 import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Projet {
+public class Projet{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -13,6 +13,7 @@ public class Projet {
     private String etat;
     private String titre;
     private Double budget;
+    private Boolean approved;
 
     @ManyToOne
     @JoinColumn(name = "propose_par_id")
@@ -38,6 +39,14 @@ public class Projet {
     }
 
     public Projet(){
+    }
+
+    public Boolean isApproved() {
+        return approved;
+    }
+
+    public void setApproved(Boolean approved) {
+        this.approved = approved;
     }
 
     public int getId() {
@@ -110,5 +119,21 @@ public class Projet {
 
     public void setTaches(List<Tache> taches) {
         this.taches = taches;
+    }
+
+    @Override
+    public String toString() {
+        return "Projet{" +
+                "id=" + id +
+                ", dateDebut=" + dateDebut +
+                ", dateFin=" + dateFin +
+                ", etat='" + etat + '\'' +
+                ", titre='" + titre + '\'' +
+                ", budget=" + budget +
+                ", approved=" + approved +
+                ", proposePar=" + proposePar +
+                ", approuvePar=" + approuvePar +
+                ", taches=" + taches +
+                '}';
     }
 }
