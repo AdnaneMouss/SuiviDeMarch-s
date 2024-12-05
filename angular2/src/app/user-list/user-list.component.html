@@ -1,0 +1,39 @@
+<div class="container py-5">
+  <h1 class="text-center mb-4">Users Overview</h1>
+
+  <div *ngIf="errorMessage" class="alert alert-danger text-center">
+    {{ errorMessage }}
+  </div>
+  <h2>Pending requests</h2>
+  <div *ngIf="users && users.length > 0; else noProjects">
+    <table class="table table-bordered table-striped table-hover">
+      <thead class="thead-dark">
+      <tr>
+        <th>#</th>
+        <th>Project Title</th>
+        <th>Status</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Budget</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!-- Use ng-container to combine *ngFor and *ngIf -->
+      <ng-container *ngFor="let user of users">
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.nom }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.gsm }}</td>
+          <td>{{ user.password }}</td>
+          <td>${{ user.type }}</td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noProjects>
+    <p class="text-center text-muted">No projects available at the moment.</p>
+  </ng-template>
+</div>
