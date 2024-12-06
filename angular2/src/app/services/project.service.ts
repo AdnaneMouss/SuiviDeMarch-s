@@ -13,8 +13,11 @@ export class ProjectService {
 
   getProjects(): Observable<Project[]> {
     const url = `${this.apiUrl}/list`;
+    console.log(url);
     return this.http.get<Project[]>(url);
   }
+
+
   approveProject(id: number): Observable<Project> {
     const url = `${this.apiUrl}/${id}/approve`;
     return this.http.put<Project>(url, {});

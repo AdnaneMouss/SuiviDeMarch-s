@@ -1,4 +1,5 @@
 package com.example.suivi.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -17,13 +18,16 @@ public class Projet{
 
     @ManyToOne
     @JoinColumn(name = "propose_par_id")
+    @JsonIgnore
     private Utilisateur proposePar;
 
     @ManyToOne
     @JoinColumn(name = "approuve_par_id")
+
     private Utilisateur approuvePar;
 
     @OneToMany(mappedBy = "projet", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Tache> taches;
 
     public Projet(int id, Date dateDebut, Date dateFin, String etat, String titre, Double budget, Utilisateur proposePar, Utilisateur approuvePar, List<Tache> taches) {

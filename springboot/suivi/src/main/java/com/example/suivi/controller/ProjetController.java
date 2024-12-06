@@ -1,11 +1,13 @@
 package com.example.suivi.controller;
 
 import com.example.suivi.model.Projet;
+import com.example.suivi.model.ProjetDTO;
 import com.example.suivi.service.ProjetService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/projects")
@@ -18,10 +20,10 @@ public class ProjetController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<Projet>> getProjects() {
-        List<Projet> projects = projetService.getAllProjects();
-        System.out.println(projects);
-        return ResponseEntity.ok().body(projects);
+    public List<ProjetDTO> getProjects() {
+        return projetService.getAllProjects().stream()
+                .map(ProjetDTO::new)
+                .collect(Collectors.toList());
     }
 
 

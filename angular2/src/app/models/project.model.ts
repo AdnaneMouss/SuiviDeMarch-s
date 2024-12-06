@@ -1,3 +1,6 @@
+import { User } from './user.model'; // Assuming you have a User interface
+
+
 export interface Project {
   id: number;
   dateDebut: string;
@@ -5,5 +8,7 @@ export interface Project {
   etat: string;
   titre: string;
   budget: number;
-  approved: Boolean | null;// New field
+  approved: boolean | null;
+  approuveParNom: string | null; // Ajout du champ approuvePar
+  proposeParNom: string | null; // Ajout du champ approuvePar
 }
