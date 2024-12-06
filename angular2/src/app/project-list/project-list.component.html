@@ -11,10 +11,10 @@
       <tr>
         <th>#</th>
         <th>Project Title</th>
-        <th>Status</th>
         <th>Start Date</th>
         <th>End Date</th>
         <th>Budget</th>
+        <th>Proposed By</th>
         <th>Actions</th>
       </tr>
       </thead>
@@ -24,10 +24,10 @@
         <tr *ngIf="project.approved == null"><!-- Only display if approved is null -->
           <td>{{ project.id }}</td>
           <td>{{ project.titre }}</td>
-          <td>{{ project.etat }}</td>
           <td>{{ project.dateDebut | date:'dd/MM/yyyy' }}</td>
           <td>{{ project.dateFin | date:'dd/MM/yyyy' }}</td>
           <td>${{ project.budget }}</td>
+          <td>${{ project.proposeParNom }}</td>
           <td style="display: grid; grid-template-columns: repeat(2,1fr); gap: 20px">
             <button
               class="btn btn-success btn-sm"
@@ -56,11 +56,12 @@
       <tr>
         <th>#</th>
         <th>Project Title</th>
-        <th>Status</th>
         <th>Start Date</th>
         <th>End Date</th>
         <th>Budget</th>
-        <th>Actions</th>
+        <th>Proposed By</th>
+        <th>Status</th>
+        <th>Approved By</th>
       </tr>
       </thead>
       <tbody>
@@ -69,11 +70,12 @@
         <tr *ngIf="project.approved != null"><!-- Only display if approved is null -->
           <td>{{ project.id }}</td>
           <td>{{ project.titre }}</td>
-          <td>{{ project.etat }}</td>
           <td>{{ project.dateDebut | date:'dd/MM/yyyy' }}</td>
           <td>{{ project.dateFin | date:'dd/MM/yyyy' }}</td>
           <td>${{ project.budget }}</td>
-          <td></td>
+          <td>{{ project.proposeParNom }}</td>
+          <td>{{ project.approved ? 'Approved' : 'Disapproved' }}</td>
+          <td>{{ project.approuveParNom }}</td>
         </tr>
       </ng-container>
       </tbody>

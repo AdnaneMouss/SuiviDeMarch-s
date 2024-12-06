@@ -28,6 +28,7 @@ export class ProjectListComponent implements OnInit {
       },
     });
   }
+
   approveProject(id: number): void {
     this.projectService.approveProject(id).subscribe({
       next: (updatedProject) => {

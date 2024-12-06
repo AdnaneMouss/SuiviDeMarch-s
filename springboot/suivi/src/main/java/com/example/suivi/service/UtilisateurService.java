@@ -2,6 +2,7 @@ package com.example.suivi.service;
 
 import com.example.suivi.model.Projet;
 import com.example.suivi.model.Utilisateur;
+import com.example.suivi.model.UtilisateurDTO;
 import com.example.suivi.repository.ProjetRepository;
 import com.example.suivi.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,25 @@ public class UtilisateurService {
     public List<Utilisateur> getAllUsers() {
         return utilisateurRepository.findAll();
     }
+
+    @Transactional
+    public void deleteUserById(int id) {
+        if (!utilisateurRepository.existsById(id)) {
+            throw new IllegalArgumentException("User with ID " + id + " does not exist.");
+        }
+        utilisateurRepository.deleteById(id);
+    }
+
+@Transactional
+        public void addUser(UtilisateurDTO utilisateurDTO) {
+            Utilisateur utilisateur = new Utilisateur();
+            utilisateur.setNom(utilisateurDTO.getNom());
+            utilisateur.setEmail(utilisateurDTO.getEmail());
+            utilisateur.setPassword(utilisateurDTO.getPassword());
+            utilisateur.setGsm(utilisateurDTO.getGsm());
+            utilisateur.setType(utilisateurDTO.getType());
+            utilisateurRepository.save(utilisateur);
+        }
 
 
 }

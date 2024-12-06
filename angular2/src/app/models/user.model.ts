@@ -1,8 +1,13 @@
+import { Project } from './project.model'; // Assuming Project is defined
+
 export interface User {
-  id: number;        // Corresponds to the @Id field
-  nom: string;       // User's name
-  email: string;     // User's email
-  password: string;  // User's password
-  gsm: string;       // User's GSM (phone number)
-  type: string;      // User's type
+  id: number;
+  nom: string;
+  email: string;
+  gsm: string;
+  type: string;
+  password: string;
+  projetsProposesIds: number[];   // IDs of proposed projects
+  projetsApprouvesIds: number[]; // IDs of approved projects
+  tachesIds: number[];           // IDs of assigned tasks
 }

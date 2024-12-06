@@ -15,6 +15,15 @@ export class UserService {
     const url = `${this.apiUrl}/list`;
     return this.http.get<User[]>(url);
   }
+
+  deleteUser(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  addUser(user: any): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/add`, user);
+  }
+
 }
 
 

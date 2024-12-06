@@ -19,7 +19,7 @@ public class Utilisateur {
     @OneToMany(mappedBy = "approuvePar", fetch = FetchType.EAGER)
     private List<Projet> projetsApprouves;
 
-    @OneToMany(mappedBy = "utilisateur")
+    @OneToMany(mappedBy = "utilisateur", fetch = FetchType.EAGER)
     private List<Tache> taches;
 
     public Utilisateur(int id, String nom, String password, String email, String gsm, String type, List<Projet> projetsProposes, List<Projet> projetsApprouves, List<Tache> taches) {
