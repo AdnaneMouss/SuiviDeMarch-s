@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {JwtService} from "../service/jwt.service";
+import {LoginService} from "../service/login.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +13,7 @@ export class DashboardComponent {
   message: string | undefined;
 
   constructor(
-    private service: JwtService
+    private service: LoginService
   ) { }
 
   ngOnInit() {

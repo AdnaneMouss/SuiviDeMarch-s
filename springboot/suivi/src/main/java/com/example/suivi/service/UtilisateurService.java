@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -44,6 +45,16 @@ public class UtilisateurService {
             utilisateur.setType(utilisateurDTO.getType());
             utilisateurRepository.save(utilisateur);
         }
-
+    public Utilisateur findByEmailAndPassword(String email, String password) {
+        Optional<Utilisateur> utilisateurOpt = utilisateurRepository.findByEmail(email);
+        if (utilisateurOpt.isPresent()) {
+            Utilisateur utilisateur = utilisateurOpt.get();
+            // Check the password (no encryption in this case)
+            if (utilisateur.getPassword().equals(password)) {
+                return utilisateur;
+            }
+        }
+        return null; // Return null if no user or invalid password
+    }
 
 }

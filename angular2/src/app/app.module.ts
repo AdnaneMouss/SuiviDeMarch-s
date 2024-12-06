@@ -5,6 +5,8 @@ import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/
 import { AppComponent } from './app.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { UserListComponent } from './user-list/user-list.component';
+import {FormsModule} from "@angular/forms";
+import {LoginComponent} from "./login/login.component";
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { UserListComponent } from './user-list/user-list.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    LoginComponent
   ],
   providers: [
     // Enable fetch for HTTP requests

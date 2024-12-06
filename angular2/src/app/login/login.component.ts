@@ -1,48 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { JwtService } from '../service/jwt.service'; // Ensure this path and service are correct.
-
+import {FormsModule} from "@angular/forms";
+import {LoginService} from "../service/login.service";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  standalone: true,
+  imports: [
+    FormsModule
+  ],
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  loginForm!: FormGroup; // Remove `undefined` as it will be initialized in `ngOnInit`.
+export class LoginComponent {
+  email: string = '';
+  password: string = '';
+  loginError: string = '';
 
-  constructor(
-    private service: JwtService, // Ensure `JwtService` has the @Injectable() decorator.
-    private fb: FormBuilder,
-    private router: Router
-  ) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]], // Use an array for multiple validators.
-      password: ['', Validators.required],
-    });
-  }
-
-  submitForm(): void {
-    if (this.loginForm.invalid) {
-      alert('Please fill all required fields.');
-      return;
-    }
-
-    this.service.login(this.loginForm.value).subscribe(
-      (response: { jwt: string }) => { // Define `response` type.
-        console.log(response);
-        if (response && response.jwt) {
-          alert('Hello, Your token is ' + response.jwt);
-          localStorage.setItem('jwt', response.jwt);
-          this.router.navigateByUrl('/dashboard');
-        }
+  onSubmit() {
+    this.loginService.login(this.email, this.password).subscribe({
+      next: (response) => {
+        console.log('Login successful');
+        this.router.navigate(['/dashboard']); // Redirect after successful login
       },
-      (error) => {
-        console.error('Login failed:', error);
-        alert('Login failed. Please try again.');
+      error: (error) => {
+        this.loginError = 'Invalid email or password!';
+        console.error('Login failed', error);
       }
-    );
+    });
   }
 }
