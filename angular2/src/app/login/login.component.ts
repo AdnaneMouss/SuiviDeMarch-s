@@ -25,7 +25,7 @@ export class LoginComponent {
     this.loginService.login(this.email, this.password).subscribe({
       next: (response) => {
         console.log('Login successful');
-        this.router.navigate(['/dashboard']); // Redirect after successful login
+        this.router.navigate(['/dashboard', response]);
       },
       error: (error) => {
         this.loginError = 'Invalid email or password!';
