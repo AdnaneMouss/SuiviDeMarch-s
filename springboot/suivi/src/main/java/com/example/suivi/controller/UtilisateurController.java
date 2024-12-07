@@ -43,12 +43,12 @@ public class UtilisateurController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> addUser(@RequestBody UtilisateurDTO utilisateurDTO) {
+    public String addUser(@RequestBody UtilisateurDTO utilisateurDTO) {
         try {
             utilisateurService.addUser(utilisateurDTO);
-            return ResponseEntity.status(HttpStatus.CREATED).body("User added successfully.");
+            return "User added successfully.";
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error adding user: " + e.getMessage());
+            return"Error adding user.";
         }
     }
 

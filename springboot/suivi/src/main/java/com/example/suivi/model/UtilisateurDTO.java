@@ -2,7 +2,6 @@ package com.example.suivi.model;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 public class UtilisateurDTO {
     private int id;
     private String nom;
@@ -14,6 +13,9 @@ public class UtilisateurDTO {
     private List<Integer> projetsApprouvesIds; // IDs of approved projects
     private List<Integer> tachesIds;           // IDs of tasks assigned
 
+    // Default constructor (needed for deserialization)
+    public UtilisateurDTO() {}
+
     // Constructor to map an `Utilisateur` entity to this DTO
     public UtilisateurDTO(Utilisateur utilisateur) {
         this.id = utilisateur.getId();
@@ -21,7 +23,7 @@ public class UtilisateurDTO {
         this.email = utilisateur.getEmail();
         this.gsm = utilisateur.getGsm();
         this.type = utilisateur.getType();
-        this.password=utilisateur.getPassword();
+        this.password = utilisateur.getPassword();
 
         // Map associated projects and tasks to their IDs
         this.projetsProposesIds = utilisateur.getProjetsProposes() != null
