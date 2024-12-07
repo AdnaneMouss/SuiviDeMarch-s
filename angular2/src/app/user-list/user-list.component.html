@@ -32,8 +32,9 @@
       <label for="type">Type</label>
       <select id="type" class="form-control" [(ngModel)]="newUser.type" name="type" required>
         <option value="admin">Admin</option>
+        <option value="admin">Director</option>
         <option value="user">Employee</option>
-        <option value="user">Chief</option>
+        <option value="user">Service Chief</option>
       </select>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Add User</button>
