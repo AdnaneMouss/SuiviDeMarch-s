@@ -7,12 +7,18 @@ import { ProjectListComponent } from './project-list/project-list.component';
 import { UserListComponent } from './user-list/user-list.component';
 import {FormsModule} from "@angular/forms";
 import {LoginComponent} from "./login/login.component";
+import { HeaderComponent } from './header/header.component';
+import { CpsComponent } from './cps/cps.component';
+import { CpsListComponent } from './cps-list/cps-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjectListComponent,
-    UserListComponent
+    UserListComponent,
+    HeaderComponent,
+    CpsComponent,
+    CpsListComponent
   ],
   imports: [
     BrowserModule,

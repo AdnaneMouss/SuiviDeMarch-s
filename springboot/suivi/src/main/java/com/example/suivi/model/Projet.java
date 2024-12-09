@@ -26,11 +26,8 @@ public class Projet{
 
     private Utilisateur approuvePar;
 
-    @OneToMany(mappedBy = "projet", fetch = FetchType.EAGER)
-    @JsonIgnore
-    private List<Tache> taches;
 
-    public Projet(int id, Date dateDebut, Date dateFin, String etat, String titre, Double budget, Utilisateur proposePar, Utilisateur approuvePar, List<Tache> taches) {
+    public Projet(int id, Date dateDebut, Date dateFin, String etat, String titre, Double budget, Utilisateur proposePar, Utilisateur approuvePar) {
         this.id = id;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
@@ -39,7 +36,6 @@ public class Projet{
         this.budget = budget;
         this.proposePar = proposePar;
         this.approuvePar = approuvePar;
-        this.taches = taches;
     }
 
     public Projet(){
@@ -117,13 +113,6 @@ public class Projet{
         this.approuvePar = approuvePar;
     }
 
-    public List<Tache> getTaches() {
-        return taches;
-    }
-
-    public void setTaches(List<Tache> taches) {
-        this.taches = taches;
-    }
 
     @Override
     public String toString() {
@@ -137,7 +126,6 @@ public class Projet{
                 ", approved=" + approved +
                 ", proposePar=" + proposePar +
                 ", approuvePar=" + approuvePar +
-                ", taches=" + taches +
                 '}';
     }
 }

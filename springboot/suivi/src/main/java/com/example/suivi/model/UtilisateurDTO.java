@@ -10,8 +10,7 @@ public class UtilisateurDTO {
     private String type;
     private String password;
     private List<Integer> projetsProposesIds;   // IDs of proposed projects
-    private List<Integer> projetsApprouvesIds; // IDs of approved projects
-    private List<Integer> tachesIds;           // IDs of tasks assigned
+    private List<Integer> projetsApprouvesIds;  // IDs of tasks assigned
 
     // Default constructor (needed for deserialization)
     public UtilisateurDTO() {}
@@ -34,9 +33,6 @@ public class UtilisateurDTO {
                 ? utilisateur.getProjetsApprouves().stream().map(Projet::getId).collect(Collectors.toList())
                 : null;
 
-        this.tachesIds = utilisateur.getTaches() != null
-                ? utilisateur.getTaches().stream().map(Tache::getId).collect(Collectors.toList())
-                : null;
     }
 
     // Getters and setters (or use Lombok @Data for brevity)
@@ -86,10 +82,6 @@ public class UtilisateurDTO {
 
     public List<Integer> getProjetsApprouvesIds() {
         return projetsApprouvesIds;
-    }
-
-    public List<Integer> getTachesIds() {
-        return tachesIds;
     }
 
     public String getPassword() {

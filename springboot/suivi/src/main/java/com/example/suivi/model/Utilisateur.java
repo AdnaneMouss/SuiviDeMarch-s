@@ -19,30 +19,30 @@ public class Utilisateur {
     @OneToMany(mappedBy = "approuvePar", fetch = FetchType.EAGER)
     private List<Projet> projetsApprouves;
 
-    @OneToMany(mappedBy = "utilisateur", fetch = FetchType.EAGER)
-    private List<Tache> taches;
+    @OneToMany(mappedBy = "proposePar", fetch = FetchType.EAGER)
+    private List<Cps> cpsprpose;
 
-    public Utilisateur(int id, String nom, String password, String email, String gsm, String type, List<Projet> projetsProposes, List<Projet> projetsApprouves, List<Tache> taches) {
+    public Utilisateur(int id, String nom, String email, String password, String gsm, String type, List<Projet> projetsProposes, List<Projet> projetsApprouves, List<Cps> cpsprpose) {
         this.id = id;
         this.nom = nom;
-        this.password = password;
         this.email = email;
+        this.password = password;
         this.gsm = gsm;
         this.type = type;
         this.projetsProposes = projetsProposes;
         this.projetsApprouves = projetsApprouves;
-        this.taches = taches;
+        this.cpsprpose = cpsprpose;
+    }
+
+    public List<Cps> getCpsprpose() {
+        return cpsprpose;
+    }
+
+    public void setCpsprpose(List<Cps> cpsprpose) {
+        this.cpsprpose = cpsprpose;
     }
 
     public Utilisateur(){}
-
-    public List<Tache> getTaches() {
-        return taches;
-    }
-
-    public void setTaches(List<Tache> taches) {
-        this.taches = taches;
-    }
 
     public List<Projet> getProjetsApprouves() {
         return projetsApprouves;
