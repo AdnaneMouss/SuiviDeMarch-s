@@ -1,31 +1,33 @@
-<div class="login-wrapper">
-  <div class="login-box">
+<div class="login-container">
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
     <h2>Login</h2>
-    <p class="subtitle">Please enter your credentials</p>
-    <form (ngSubmit)="login()">
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          [(ngModel)]="email"
-          name="email"
-          class="form-control"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          [(ngModel)]="password"
-          name="password"
-          class="form-control"
-          required
-        />      </div>
-      <button type="submit">Login</button>
-      <div *ngIf="errorMessage" class="text-danger mt-2">{{ errorMessage }}</div>
-    </form>
-  </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="form-control"
+        [(ngModel)]="loginData.email"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        class="form-control"
+        [(ngModel)]="loginData.password"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">
+      Login
+    </button>
+  </form>
 </div>

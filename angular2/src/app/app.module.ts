@@ -16,13 +16,13 @@ import { CpsComponent } from './cps-list/cps-list.component';
     ProjectListComponent,
     UserListComponent,
     HeaderComponent,
-    CpsComponent,
-    LoginComponent
+    CpsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    LoginComponent,
   ],
   providers: [
     // Enable fetch for HTTP requests

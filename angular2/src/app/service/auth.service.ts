@@ -32,4 +32,3 @@ export class AuthService {
     return JSON.parse(localStorage.getItem('user')!); // Récupère l'utilisateur depuis le localStorage
   }
 }
-

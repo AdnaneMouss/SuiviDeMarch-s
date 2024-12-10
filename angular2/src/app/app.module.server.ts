@@ -1,8 +1,8 @@
 // app.module.server.ts
 import { NgModule } from '@angular/core';
-import { ServerModule } from '@angular/platform-server';  // Import ServerModule for SSR
-import { AppModule } from './app.module';  // Import AppModule (client-side module)
+import { ServerModule } from '@angular/platform-server';  // Import AppModule (client-side module)
 import { AppComponent } from './app.component';
+import {AppModule} from "./app.module";
 
 @NgModule({
   imports: [
