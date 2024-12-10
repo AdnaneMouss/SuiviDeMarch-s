@@ -8,8 +8,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import {FormsModule} from "@angular/forms";
 import {LoginComponent} from "./login/login.component";
 import { HeaderComponent } from './header/header.component';
-import { CpsComponent } from './cps/cps.component';
-import { CpsListComponent } from './cps-list/cps-list.component';
+import { CpsComponent } from './cps-list/cps-list.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +17,12 @@ import { CpsListComponent } from './cps-list/cps-list.component';
     UserListComponent,
     HeaderComponent,
     CpsComponent,
-    CpsListComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    LoginComponent
   ],
   providers: [
     // Enable fetch for HTTP requests

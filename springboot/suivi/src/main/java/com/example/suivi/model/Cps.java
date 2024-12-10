@@ -12,13 +12,11 @@ public class Cps{
     private String nom;
     private String tasks;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id")
-    @JsonIgnore
     private Projet project_id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "propose_par_id")
-    @JsonIgnore
     private Utilisateur proposePar;
 
     public Cps() {

@@ -1,0 +1,71 @@
+/* Apply general styling to the container */
+.container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+/* Styling for the table */
+.table {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse; /* To remove extra spaces between table cells */
+}
+
+.table th,
+.table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Styling for table headers */
+.table th {
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Row hover effect */
+.table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Styling for table rows */
+.table td {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Alternate row colors for better readability */
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Add a border to the table */
+.table-bordered {
+  border: 1px solid #ddd;
+}
+
+/* Heading styling */
+h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .table th, .table td {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}

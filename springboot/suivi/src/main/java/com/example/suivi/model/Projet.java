@@ -18,7 +18,6 @@ public class Projet{
 
     @ManyToOne
     @JoinColumn(name = "propose_par_id")
-    @JsonIgnore
     private Utilisateur proposePar;
 
     @ManyToOne
