@@ -45,17 +45,17 @@ public class UtilisateurService {
             utilisateur.setType(utilisateurDTO.getType());
             utilisateurRepository.save(utilisateur);
         }
-    public Utilisateur findByEmailAndPassword(String email, String password) {
+    public UtilisateurDTO findByEmailAndPassword(String email, String password) {
         Optional<Utilisateur> utilisateurOpt = utilisateurRepository.findByEmail(email);
         if (utilisateurOpt.isPresent()) {
             Utilisateur utilisateur = utilisateurOpt.get();
-            // Comparaison des mots de passe (sans cryptage ici, ajouter bcrypt si nécessaire)
             if (utilisateur.getPassword().equals(password)) {
-                return utilisateur;
+                return new UtilisateurDTO(utilisateur); // Renvoie un DTO à la place de l'entité
             }
         }
         return null; // Retourne null si l'utilisateur n'est pas trouvé ou si le mot de passe est incorrect
     }
+
 
 
 }

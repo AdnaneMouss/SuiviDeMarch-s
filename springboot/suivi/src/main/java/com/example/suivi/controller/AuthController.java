@@ -1,6 +1,7 @@
 package com.example.suivi.controller;
 
 import com.example.suivi.model.Utilisateur;
+import com.example.suivi.model.UtilisateurDTO;
 import com.example.suivi.service.UtilisateurService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +19,13 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Utilisateur utilisateur) {
-        Utilisateur foundUser = utilisateurService.findByEmailAndPassword(utilisateur.getEmail(), utilisateur.getPassword());
+        UtilisateurDTO foundUser = utilisateurService.findByEmailAndPassword(utilisateur.getEmail(), utilisateur.getPassword());
 
         if (foundUser != null) {
-            // Retourner le type de l'utilisateur en cas de succès
-            return ResponseEntity.ok().body(foundUser.getType());
+            // Retourne le DTO de l'utilisateur avec son type en cas de succès
+            return ResponseEntity.ok().body(foundUser);
         } else {
-            // Retourner une réponse 401 en cas d'échec
+            // Retourne une réponse 401 en cas d'échec
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
         }
     }

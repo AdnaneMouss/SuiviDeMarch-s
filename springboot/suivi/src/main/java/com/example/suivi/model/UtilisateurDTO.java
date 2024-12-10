@@ -32,7 +32,6 @@ public class UtilisateurDTO {
         this.projetsApprouvesIds = utilisateur.getProjetsApprouves() != null
                 ? utilisateur.getProjetsApprouves().stream().map(Projet::getId).collect(Collectors.toList())
                 : null;
-
     }
 
     // Getters and setters (or use Lombok @Data for brevity)
