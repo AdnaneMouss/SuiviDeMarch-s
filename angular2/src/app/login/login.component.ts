@@ -21,7 +21,7 @@ export class LoginComponent {
     this.http.post<any>('http://localhost:8080/api/auth/login', this.loginData).subscribe({
       next: (response) => {
         if (response.type === 'admin') {
-          this.router.navigate(['/admin']);
+          this.router.navigate(['/dashboard']);
         } else if (response.type === 'manager') {
           this.router.navigate(['/manager']);
         } else if (response.type === 'client') {
