@@ -5,7 +5,7 @@ import {NgIf} from '@angular/common';
 import {AuthService} from "../service/login.service";
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-logintemp',
   templateUrl: './login.component.html',
   styleUrls: ['../CSS/styles.scss'],
   imports: [
