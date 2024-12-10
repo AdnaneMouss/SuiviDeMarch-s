@@ -1,36 +1,50 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {FormsModule} from "@angular/forms";
-import {LoginService} from "../service/login.service";
+import {FormsModule} from '@angular/forms';
+import {NgIf} from '@angular/common';
+import {AuthService} from "../service/login.service";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  standalone: true,
+  styleUrls: ['../CSS/styles.scss'],
   imports: [
-    CommonModule,
-    FormsModule
+    FormsModule,
+    NgIf
   ],
-  styleUrls: ['./login.component.css']
+  standalone: true
 })
 export class LoginComponent {
   email: string = '';
   password: string = '';
-  loginError: string = '';
+  errorMessage: string = '';
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  onSubmit() {
-    this.loginService.login(this.email, this.password).subscribe({
-      next: (response) => {
-        console.log('Login successful');
-        this.router.navigate(['/dashboard', response]);
+  // Fonction de soumission du formulaire de login
+  login(): void {
+    this.authService.login(this.email, this.password).subscribe(
+      (response) => {
+        // Stocker les données de l'utilisateur dans localStorage
+        localStorage.setItem('user', JSON.stringify(response));
+
+        // Vérifier le type de l'utilisateur et rediriger en conséquence
+        const userType = response.type;
+
+        if (userType === 'admin') {
+          this.router.navigate(['/admin-dashboard']);  // Rediriger vers le tableau de bord admin
+        } else if (userType === 'chef de projet') {
+          this.router.navigate(['/project-leader-dashboard']);  // Rediriger vers le tableau de bord chef de projet
+        } else if (userType === 'employee') {
+          this.router.navigate(['/employee-dashboard']);  // Rediriger vers le tableau de bord employé
+        } else {
+          this.router.navigate(['/dashboard']);  // Rediriger vers un tableau de bord général
+        }
       },
-      error: (error) => {
-        this.loginError = 'Invalid email or password!';
-        console.error('Login failed', error);
+      (error) => {
+        // Gérer les erreurs de connexion
+        this.errorMessage = 'Invalid email or password';
       }
-    });
+    );
   }
 }
