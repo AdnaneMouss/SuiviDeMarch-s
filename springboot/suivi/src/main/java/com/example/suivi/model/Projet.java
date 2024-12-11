@@ -20,10 +20,6 @@ public class Projet{
     @JoinColumn(name = "propose_par_id")
     private Utilisateur proposePar;
 
-    @ManyToOne
-    @JoinColumn(name = "approuve_par_id")
-
-    private Utilisateur approuvePar;
 
 
     public Projet(int id, Date dateDebut, Date dateFin, String etat, String titre, Double budget, Utilisateur proposePar, Utilisateur approuvePar) {
@@ -34,7 +30,6 @@ public class Projet{
         this.titre = titre;
         this.budget = budget;
         this.proposePar = proposePar;
-        this.approuvePar = approuvePar;
     }
 
     public Projet(){
@@ -104,14 +99,6 @@ public class Projet{
         this.proposePar = proposePar;
     }
 
-    public Utilisateur getApprouvePar() {
-        return approuvePar;
-    }
-
-    public void setApprouvePar(Utilisateur approuvePar) {
-        this.approuvePar = approuvePar;
-    }
-
 
     @Override
     public String toString() {
@@ -124,7 +111,6 @@ public class Projet{
                 ", budget=" + budget +
                 ", approved=" + approved +
                 ", proposePar=" + proposePar +
-                ", approuvePar=" + approuvePar +
                 '}';
     }
 }

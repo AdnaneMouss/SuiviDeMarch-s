@@ -3,7 +3,6 @@ package com.example.suivi.controller;
 import com.example.suivi.model.Projet;
 import com.example.suivi.model.ProjetDTO;
 import com.example.suivi.model.UtilisateurDTO;
-import com.example.suivi.repository.ProjetRepository;
 import com.example.suivi.service.ProjetService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +15,7 @@ import java.util.stream.Collectors;
 public class ProjetController {
 
     private final ProjetService projetService;
+
     public ProjetController(ProjetService projetService) {
         this.projetService = projetService;
     }
@@ -47,12 +47,5 @@ public class ProjetController {
         } catch (Exception e) {
             return"Error adding user.";
         }
-    }
-
-    @GetMapping("/list/{userId}")
-    public List<ProjetDTO> getProjectsByUser(@PathVariable("userId") int userId) {
-        return projetService.getProjectsById(userId).stream()
-                .map(ProjetDTO::new)
-                .collect(Collectors.toList());// Filter projects by user ID
     }
 }

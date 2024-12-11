@@ -22,7 +22,6 @@ public class ProjetDTO {
         this.titre = projet.getTitre();
         this.budget = projet.getBudget();
         this.approved = projet.isApproved();
-        this.approuveParNom = projet.getApprouvePar() != null ? projet.getApprouvePar().getNom() : null;
         this.proposeParNom = projet.getProposePar() != null ? projet.getProposePar().getNom() : null;
     }
 

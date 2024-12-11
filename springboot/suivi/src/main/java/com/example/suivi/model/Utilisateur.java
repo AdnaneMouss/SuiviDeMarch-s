@@ -16,13 +16,11 @@ public class Utilisateur {
     @OneToMany(mappedBy = "proposePar", fetch = FetchType.EAGER)
     private List<Projet> projetsProposes;
 
-    @OneToMany(mappedBy = "approuvePar", fetch = FetchType.EAGER)
-    private List<Projet> projetsApprouves;
 
     @OneToMany(mappedBy = "proposePar", fetch = FetchType.EAGER)
     private List<Cps> cpsprpose;
 
-    public Utilisateur(int id, String nom, String email, String password, String gsm, String type, List<Projet> projetsProposes, List<Projet> projetsApprouves, List<Cps> cpsprpose) {
+    public Utilisateur(int id, String nom, String email, String password, String gsm, String type, List<Projet> projetsProposes, List<Cps> cpsprpose) {
         this.id = id;
         this.nom = nom;
         this.email = email;
@@ -30,7 +28,6 @@ public class Utilisateur {
         this.gsm = gsm;
         this.type = type;
         this.projetsProposes = projetsProposes;
-        this.projetsApprouves = projetsApprouves;
         this.cpsprpose = cpsprpose;
     }
 
@@ -44,13 +41,6 @@ public class Utilisateur {
 
     public Utilisateur(){}
 
-    public List<Projet> getProjetsApprouves() {
-        return projetsApprouves;
-    }
-
-    public void setProjetsApprouves(List<Projet> projetsApprouves) {
-        this.projetsApprouves = projetsApprouves;
-    }
 
     public List<Projet> getProjetsProposes() {
         return projetsProposes;

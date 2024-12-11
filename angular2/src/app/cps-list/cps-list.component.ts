@@ -39,18 +39,30 @@ export class CpsComponent implements OnInit {
     };
   }
   onSubmit() {
+    const user = JSON.parse(localStorage.getItem('user') || '{}'); // Get logged-in user
+    const employeeId = user?.id; // Extract the user ID
+
+    if (!employeeId) {
+      this.errorMessage = 'You are not logged in. Please log in to add a CPS.';
+      return;
+    }
+
+    // Set the proposeParId to the logged-in user's ID
+    this.cps.proposeParId = employeeId;
+
     this.cpsService.addCps(this.cps).subscribe({
       next: (response) => {
-        this.loadCps();
-        this.resetForm();
-
+        this.successMessage = 'CPS added successfully!';
+        this.loadCps(); // Refresh the CPS list
+        this.resetForm(); // Reset the form
       },
-      error: () => {
+      error: (err) => {
         this.resetForm();
-        this.loadCps();
+        this.loadCps(); // Reload the list in case of error to stay up to date
       }
     });
   }
+
 
   loadProjects(): void {
     const user = JSON.parse(localStorage.getItem('user') || '{}'); // Get logged-in user
@@ -72,7 +84,6 @@ export class CpsComponent implements OnInit {
         );
       },
       error: (err) => {
-        this.errorMessage = 'Error fetching projects: ' + err.message;
       },
     });
   }
@@ -89,7 +100,7 @@ export class CpsComponent implements OnInit {
           this.cpsList = data;
         },
         error: (err) => {
-          this.errorMessage = 'Failed to load CPS data.';
+
         }
       });
     } else {
@@ -99,7 +110,7 @@ export class CpsComponent implements OnInit {
 
 
   deleteCPS(id: number): void {
-    if (confirm(`Are you sure you want to delete the user with ID ${id}?`)) {
+    if (confirm(`Are you sure you want to delete the CPS?`)) {
       this.cpsService.deleteCPS(id).subscribe({
         next: () => {
           this.cpsList = this.cpsList.filter(cps => cps.id !== id);

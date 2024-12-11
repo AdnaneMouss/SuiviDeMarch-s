@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'users', component: UserListComponent, canActivate: [AuthGuard], data: { roles: ['Admin'] } },
   { path: 'projectsEmployee', component: ProjectListEmployeeComponent, canActivate: [AuthGuard], data: { roles: ['Employee'] } },
   { path: 'cps', component: CpsComponent, canActivate: [AuthGuard], data: { roles: ['Employee'] } },
-  { path: 'projects', component: ProjectListComponent, canActivate: [AuthGuard], data: { roles: ['Manager'] } },
+  { path: 'projects', component: ProjectListComponent, canActivate: [AuthGuard], data: { roles: ['Manager', 'Director'] } },
+
   { path: '**', redirectTo: 'login', pathMatch: 'full' }
 ];
 

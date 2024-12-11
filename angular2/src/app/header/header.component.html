@@ -19,7 +19,11 @@
       </ul>
 
       <!-- Manager Links -->
-      <ul *ngIf="userType === 'Manager'" class="navbar-menu">
+      <ul *ngIf="userType === 'Chief'" class="navbar-menu">
+        <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
+      </ul>
+
+      <ul *ngIf="userType === 'Director'" class="navbar-menu">
         <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
       </ul>
 

@@ -24,12 +24,15 @@ public class CpsService {
     @Autowired
     private ProjetRepository projetRepository;
 
+    @Autowired UtilisateurRepository utiliseurRepository;
+
     @Autowired
     private UtilisateurRepository utilisateurRepository;
 
     public List<Cps> getCpsByUserId(int userId) {
         return cpsRepository.findByProposeParId(userId);
     }
+
     public void addCps(CpsDTO cpsDTO) {
         Cps cps = new Cps();
 
@@ -44,8 +47,19 @@ public class CpsService {
         } else {
             throw new RuntimeException("Project with ID " + cpsDTO.getProjectId() + " not found.");
         }
+
+        // Set the user (proposeParId)
+        Optional<Utilisateur> user = utilisateurRepository.findById(cpsDTO.getProposeParId());
+        if (user.isPresent()) {
+            cps.setproposePar(user.get());
+        } else {
+            throw new RuntimeException("User with ID " + cpsDTO.getProposeParId() + " not found.");
+        }
+
+        // Save the CPS entity
         cpsRepository.save(cps);
     }
+
 
     @Transactional
     public void deleteCPSById(int id) {
