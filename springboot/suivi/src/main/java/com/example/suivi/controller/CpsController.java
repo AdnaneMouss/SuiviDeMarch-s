@@ -20,13 +20,17 @@ public class CpsController {
     @Autowired
     private CpsService cpsService;
 
-    @GetMapping("/list")
-    public List<CpsDTO> getCPS() {
-        System.out.println(cpsService.getAllCps());
-        return cpsService.getAllCps().stream()
-                .map(CpsDTO::new)
+    @GetMapping("/list/{userId}")
+    public List<CpsDTO> getCpsByUser(@PathVariable("userId") int userId) {
+        // Fetch the CPS data for the specific user
+        List<Cps> cpsList = cpsService.getCpsByUserId(userId);
+
+        // Convert CPS entities to DTOs and return
+        return cpsList.stream()
+                .map(cps -> new CpsDTO(cps))  // Assuming you have a constructor in CpsDTO to convert Cps entity
                 .collect(Collectors.toList());
     }
+
     @PostMapping("/add")
     public String addCPS(@RequestBody CpsDTO cpsDTO) {
         try {

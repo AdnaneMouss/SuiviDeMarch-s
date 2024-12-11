@@ -8,6 +8,8 @@ import com.example.suivi.repository.ProjetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -65,5 +67,9 @@ public Projet approveProject(int id) {
         // Save the project
         projetRepository.save(projet);
     }
+@Transactional
+public List<Projet> getProjectsById(int id) {
+       return projetRepository.findByProposeParId(id);
+}
 
 }

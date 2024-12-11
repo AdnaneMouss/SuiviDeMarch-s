@@ -37,8 +37,6 @@
         required
       ></textarea>
     </div>
-
-    <!-- Project Dropdown -->
     <div class="form-group">
       <label for="projectId">Select Project</label>
       <select
@@ -48,11 +46,16 @@
         class="form-control"
         required
       >
-        <option *ngFor="let project of projects" [value]="project.id">
-          {{ project.titre }} - Budget: {{ project.budget | currency }}
-        </option>
+        <!-- Use filteredProjects instead of projects -->
+        <ng-container *ngFor="let project of filteredProjects">
+          <option *ngIf="project.approved == true" [value]="project.id">
+            {{ project.titre }} - Budget: {{ project.budget | currency }}
+          </option>
+        </ng-container>
       </select>
     </div>
+
+
 
     <!-- Submit Button -->
     <button type="submit" class="btn btn-primary">Add CPS</button>

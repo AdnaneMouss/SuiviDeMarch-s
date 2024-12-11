@@ -9,4 +9,6 @@ import java.util.List;
 public interface CpsRepository extends JpaRepository<Cps, Integer> {
     @Query("SELECT c FROM Cps c WHERE c.proposePar.id = :utilisateurId")
     List<Cps> findByUtilisateurId(@Param("utilisateurId") int utilisateurId);
+
+    List<Cps> findByProposeParId(int proposeParId);
 }

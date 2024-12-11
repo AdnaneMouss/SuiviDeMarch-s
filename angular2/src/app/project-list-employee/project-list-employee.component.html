@@ -1,0 +1,99 @@
+<div class="page-container container py-5">
+  <h1 class="text-center mb-4">Projects Overview</h1>
+
+  <div *ngIf="errorMessage" class="alert alert-danger text-center">
+    {{ errorMessage }}
+  </div>
+
+  <h2>Your projects ideas status</h2>
+  <div class="page-container container py-5">
+    <h1 class="text-center mb-4">Projects Overview</h1>
+
+    <!-- Display error message if any -->
+    <div *ngIf="errorMessage" class="alert alert-danger text-center">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Projects Table -->
+    <h2>Your Projects</h2>
+    <div *ngIf="filteredProjects && filteredProjects.length > 0; else noProjects" class="table-section">
+      <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+          <th>Project Title</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Budget</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let project of filteredProjects">
+          <td>{{ project.titre }}</td>
+          <td>{{ project.dateDebut | date: 'yyyy-MM-dd' }}</td>
+          <td>{{ project.dateFin | date: 'yyyy-MM-dd' }}</td>
+          <td>${{ project.budget }}</td>
+          <td>{{ project.approved ? 'Approved' : 'Pending' }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- No Projects Message -->
+    <ng-template #noProjects>
+      <p class="text-center text-muted">No projects found for you.</p>
+    </ng-template>
+  </div>
+
+  <h1>My Projects</h1>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <!-- Add Project Form -->
+  <div>
+    <h2>Add a New Project</h2>
+    <form (ngSubmit)="addProject()">
+      <label for="titre">Title:</label>
+      <input
+        id="titre"
+        type="text"
+        [(ngModel)]="newProject.titre"
+        name="titre"
+        required
+      />
+
+      <label for="budget">Budget:</label>
+      <input
+        id="budget"
+        type="number"
+        [(ngModel)]="newProject.budget"
+        name="budget"
+        required
+      />
+
+      <label for="dateDebut">Start Date:</label>
+      <input
+        id="dateDebut"
+        type="date"
+        [(ngModel)]="newProject.dateDebut"
+        name="dateDebut"
+        required
+      />
+
+      <label for="dateFin">End Date:</label>
+      <input
+        id="dateFin"
+        type="date"
+        [(ngModel)]="newProject.dateFin"
+        name="dateFin"
+        required
+      />
+
+      <button type="submit">Add Project</button>
+    </form>
+  </div>
+
+
+  <ng-template #noProjects>
+    <p class="text-center text-muted">No projects available at the moment.</p>
+  </ng-template>
+</div>

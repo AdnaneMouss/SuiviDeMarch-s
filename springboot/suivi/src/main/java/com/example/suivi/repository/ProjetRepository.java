@@ -11,4 +11,5 @@ import java.util.List;
 public interface ProjetRepository extends JpaRepository<Projet, Integer> {
     @Query("SELECT p FROM Projet p")
     List<Projet> fetchAll();
+    List<Projet> findByProposeParId(int userId);
 }

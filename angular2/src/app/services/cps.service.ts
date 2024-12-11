@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CpsDTO } from '../models/cps.model'; // Import the CpsDTO model
+import { CpsDTO } from '../models/cps.model';
+import {Project} from "../models/project.model"; // Import the CpsDTO model
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,17 @@ export class CpsService {
   constructor(private http: HttpClient) { }
 
   // Method to get all CPS
-  getAllCps(): Observable<CpsDTO[]> {
-    return this.http.get<CpsDTO[]>(`${this.apiUrl}/list`);
+// cps.service.ts
+
+  getAllCps(userId: number): Observable<CpsDTO[]> {
+    return this.http.get<CpsDTO[]>(`${this.apiUrl}/list/${userId}`);
   }
+
+  getAllProjects(userId: number): Observable<any[]> {
+    const url = `${this.apiUrl}/list`;
+    return this.http.get<Project[]>(url);
+  }
+
 
   addCps(cps: CpsDTO): Observable<string> {
     return this.http.post<string>(`${this.apiUrl}/add`, cps);
@@ -25,9 +34,4 @@ export class CpsService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-
-
-  getAllProjects(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.projectUrl}/list`);
-  }
 }

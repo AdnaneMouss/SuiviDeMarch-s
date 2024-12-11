@@ -27,8 +27,8 @@ public class CpsService {
     @Autowired
     private UtilisateurRepository utilisateurRepository;
 
-    public List<Cps> getAllCps() {
-        return cpsRepository.findAll();
+    public List<Cps> getCpsByUserId(int userId) {
+        return cpsRepository.findByProposeParId(userId);
     }
     public void addCps(CpsDTO cpsDTO) {
         Cps cps = new Cps();
