@@ -28,5 +28,8 @@ export class ProjectService {
     return this.http.put<Project>(url, {});
   }
 
+  addUser(project: any): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/add`, project);
+  }
 
 }

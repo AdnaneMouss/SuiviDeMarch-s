@@ -1,33 +1,37 @@
 <div class="login-container">
-  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-    <h2>Login</h2>
+  <h2>Login</h2>
 
+  <!-- Display error message if credentials are invalid -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <form (ngSubmit)="onLogin()">
     <div class="form-group">
-      <label for="email">Email</label>
+      <label for="email">Email:</label>
       <input
-        type="email"
         id="email"
+        type="email"
+        [(ngModel)]="email"
         name="email"
-        class="form-control"
-        [(ngModel)]="loginData.email"
         required
+        class="form-control"
+        placeholder="Enter your email"
       />
     </div>
 
     <div class="form-group">
-      <label for="password">Password</label>
+      <label for="password">Password:</label>
       <input
-        type="password"
         id="password"
+        type="password"
+        [(ngModel)]="password"
         name="password"
-        class="form-control"
-        [(ngModel)]="loginData.password"
         required
+        class="form-control"
+        placeholder="Enter your password"
       />
     </div>
-
-    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">
-      Login
-    </button>
+    <button type="submit" class="btn btn-primary">Login</button>
   </form>
 </div>

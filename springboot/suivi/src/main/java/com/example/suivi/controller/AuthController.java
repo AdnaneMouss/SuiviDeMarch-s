@@ -22,11 +22,12 @@ public class AuthController {
         UtilisateurDTO foundUser = utilisateurService.findByEmailAndPassword(utilisateur.getEmail(), utilisateur.getPassword());
 
         if (foundUser != null) {
-            // Retourne le DTO de l'utilisateur avec son type en cas de succès
+            // Return user type with the DTO
             return ResponseEntity.ok().body(foundUser);
         } else {
-            // Retourne une réponse 401 en cas d'échec
+            // Return 401 if credentials are invalid
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
         }
     }
+
 }

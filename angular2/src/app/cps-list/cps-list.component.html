@@ -1,5 +1,65 @@
 <div class="container">
-  <h2>List of CPS</h2>
+  <h1 class="text-center">Add CPS</h1>
+
+  <!-- Error Messages -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+
+  <!-- CPS Form -->
+  <form (ngSubmit)="onSubmit()">
+    <!-- CPS Name -->
+    <div class="form-group">
+      <label for="nom">CPS Name</label>
+      <input
+        type="text"
+        id="nom"
+        [(ngModel)]="cps.nom"
+        name="nom"
+        class="form-control"
+        placeholder="Enter CPS Name"
+        required
+      />
+    </div>
+
+    <!-- CPS Tasks -->
+    <div class="form-group">
+      <label for="tasks">Tasks</label>
+      <textarea
+        id="tasks"
+        [(ngModel)]="cps.tasks"
+        name="tasks"
+        class="form-control"
+        placeholder="Enter CPS Tasks"
+        required
+      ></textarea>
+    </div>
+
+    <!-- Project Dropdown -->
+    <div class="form-group">
+      <label for="projectId">Select Project</label>
+      <select
+        id="projectId"
+        [(ngModel)]="cps.projectId"
+        name="projectId"
+        class="form-control"
+        required
+      >
+        <option *ngFor="let project of projects" [value]="project.id">
+          {{ project.titre }} - Budget: {{ project.budget | currency }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Add CPS</button>
+  </form>
+
+  <!-- List of CPS -->
+  <h2 class="text-center">List of CPS</h2>
   <table class="table table-bordered">
     <thead>
     <tr>
@@ -9,6 +69,7 @@
       <th>Start Date</th>
       <th>End Date</th>
       <th>Budget</th>
+      <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -18,8 +79,14 @@
       <td>{{ cps.projectTitle }}</td>
       <td>{{ cps.startDate | date: 'yyyy-MM-dd' }}</td>
       <td>{{ cps.endDate | date: 'yyyy-MM-dd' }}</td>
-      <td>{{ cps.budget }}</td>
+      <td>{{ cps.budget | currency }}</td>
+      <td>
+        <button style="background-color: red" (click)="deleteCPS(cps.id)" class="btn btn-danger btn-sm">
+          Delete
+        </button>
+      </td>
     </tr>
     </tbody>
   </table>
 </div>
+

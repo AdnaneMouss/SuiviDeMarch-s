@@ -9,6 +9,9 @@ import {FormsModule} from "@angular/forms";
 import {LoginComponent} from "./login/login.component";
 import { HeaderComponent } from './header/header.component';
 import { CpsComponent } from './cps-list/cps-list.component';
+import {RouterModule, RouterOutlet} from "@angular/router";
+import { ProjectListEmployeeComponent } from './project-list-employee/project-list-employee.component';
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -16,14 +19,17 @@ import { CpsComponent } from './cps-list/cps-list.component';
     ProjectListComponent,
     UserListComponent,
     HeaderComponent,
-    CpsComponent
+    CpsComponent,
+    ProjectListEmployeeComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    LoginComponent,
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        FormsModule,
+        LoginComponent,
+        RouterOutlet,
+      AppRoutingModule
+    ],
   providers: [
     // Enable fetch for HTTP requests
     provideHttpClient(withFetch())

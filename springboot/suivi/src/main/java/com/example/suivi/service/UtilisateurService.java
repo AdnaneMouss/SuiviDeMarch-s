@@ -43,7 +43,7 @@ public class UtilisateurService {
             utilisateur.setPassword(utilisateurDTO.getPassword());
             utilisateur.setGsm(utilisateurDTO.getGsm());
             utilisateur.setType(utilisateurDTO.getType());
-            utilisateurRepository.save(utilisateur);
+    utilisateurRepository.save(utilisateur);
         }
     public UtilisateurDTO findByEmailAndPassword(String email, String password) {
         Optional<Utilisateur> utilisateurOpt = utilisateurRepository.findByEmail(email);
@@ -57,5 +57,8 @@ public class UtilisateurService {
     }
 
 
+    public Utilisateur findByName(String name) {
+        return utilisateurRepository.findByNom(name);  // Assuming you have a 'nom' field in your 'Utilisateur' entity
+    }
 
 }

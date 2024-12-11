@@ -2,6 +2,7 @@ package com.example.suivi.controller;
 
 import com.example.suivi.model.Projet;
 import com.example.suivi.model.ProjetDTO;
+import com.example.suivi.model.UtilisateurDTO;
 import com.example.suivi.service.ProjetService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,5 +37,15 @@ public class ProjetController {
     public ResponseEntity<Projet> disApproveProject(@PathVariable int id) {
         Projet approvedProject = projetService.disApproveProject(id);
         return ResponseEntity.ok(approvedProject);
+    }
+
+    @PostMapping("/add")
+    public String addProject(@RequestBody ProjetDTO projetDTO) {
+        try {
+            projetService.addProject(projetDTO);
+            return "Project added successfully.";
+        } catch (Exception e) {
+            return"Error adding user.";
+        }
     }
 }

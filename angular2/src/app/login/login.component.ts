@@ -1,38 +1,51 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import {Router, RouterLink} from '@angular/router';
+import { LoginService } from '../services/login.service';
 import {FormsModule} from "@angular/forms";
+import {NgIf} from "@angular/common";  // Adjust the import path based on your project structure
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
+    NgIf,
+    RouterLink
   ],
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  loginData = { email: '', password: '' };
+  email: string = '';
+  password: string = '';
+  errorMessage: string = '';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
-  onSubmit() {
-    this.http.post<any>('http://localhost:8080/api/auth/login', this.loginData).subscribe({
-      next: (response) => {
-        if (response.type === 'admin') {
-          this.router.navigate(['/users']);
-        } else if (response.type === 'manager') {
-          this.router.navigate(['/manager']);
-        } else if (response.type === 'client') {
-          this.router.navigate(['/client']);
+  onLogin() {
+    console.log('Attempting login...'); // Debug log
+    this.loginService.login(this.email, this.password).subscribe({
+      next: (response: any) => {
+        console.log('Response received from API:', response); // Log response
+        localStorage.setItem('user', JSON.stringify(response)); // Store the user info in localStorage
+
+        // Redirect based on user type
+        if (response.type === 'Admin') {
+          this.router.navigate(['/users']); // Redirect Admin to users page
+        } else if (response.type === 'Employee') {
+          this.router.navigate(['/projectsEmployee']); // Redirect Employee
+        } else if (response.type === 'Manager') {
+          this.router.navigate(['/projects']); // Redirect Manager
         } else {
-          alert('Unknown user type');
+          this.errorMessage = 'Unknown user type. Contact administrator.';
         }
       },
-      error: () => {
-        alert('Invalid email or password');
+      error: (error) => {
+        console.error('Error occurred during login:', error); // Log error
+        this.errorMessage = 'Invalid credentials, please try again.';
       }
     });
   }
+
+
 }
