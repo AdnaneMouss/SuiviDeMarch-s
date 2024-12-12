@@ -1,14 +1,45 @@
-/* General container styles */
-.page-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-  background-color: #f9f9f9;
+/* Overall Page Container */
+.page-containers {
+  background: url("../../assets/bg-image.png"); /* Path to your image */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the image */
+  background-attachment: fixed; /* Fixed during scrolling */
+  background-repeat: no-repeat; /* No repeat */
+  min-height: 100vh; /* Ensure full viewport height */
+  padding: 20px; /* Space inside the container */
+  display: flex; /* Make it flexible for content */
+  align-items: center; /* Center items vertically */
+}
+
+/* Content Layout: Side-by-side sections */
+.content-layout {
+  display: flex;
+  justify-content: space-between; /* Space between left and right sections */
+  align-items: flex-start; /* Align sections to the top */
+  gap: 20px; /* Add spacing between left and right sections */
+  width: 100%; /* Stretch to full width */
+}
+
+/* Left Content Styling */
+.left-content {
+  flex: 2; /* Take up more space on the left */
+  background-color: white;
+  padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Title and headings */
+/* Right Content Styling */
+.right-content {
+  flex: 1; /* Take up less space on the right */
+  max-width: 400px; /* Optional: limit the width of the form */
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
 h1, h2 {
   color: #333;
   font-family: 'Roboto', sans-serif;
@@ -26,7 +57,7 @@ h2 {
   margin-bottom: 1rem;
 }
 
-/* Error message */
+/* Error Message Styling */
 .alert {
   font-size: 1rem;
   font-weight: 500;
@@ -35,11 +66,12 @@ h2 {
   color: #d32f2f;
   padding: 0.75rem;
   border-radius: 4px;
+  margin-bottom: 1rem;
 }
 
-/* Table styles */
+/* Table Styling */
 .table-container {
-  overflow-x: auto; /* For responsiveness */
+  overflow-x: auto; /* Ensure responsiveness */
 }
 
 .table {
@@ -74,17 +106,13 @@ h2 {
   background-color: #eaf4ff;
 }
 
-/* Form styles */
+/* Form Styling */
 form {
   background-color: #fff;
   padding: 1.5rem;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.form-group {
-  margin-bottom: 1rem;
 }
 
 label {
@@ -101,6 +129,7 @@ input, select, button {
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+  margin-bottom: 1rem;
 }
 
 input:focus, select:focus {
@@ -128,18 +157,19 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* Placeholder text styles */
 input::placeholder {
   color: #aaa;
 }
 
-/* Responsive adjustments */
+/* Responsive Design */
 @media (max-width: 768px) {
-  .form-row {
-    flex-direction: column;
+  .content-layout {
+    flex-direction: column; /* Stack sections vertically */
+    gap: 10px; /* Reduce spacing */
   }
 
-  .form-group {
-    width: 100%;
+  .right-content, .left-content {
+    max-width: 100%; /* Allow full width */
+    flex: none; /* Remove flex behavior */
   }
 }

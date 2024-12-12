@@ -1,7 +1,7 @@
-<div class="container">
+<div class="page-container">
+  <div class="container">
   <h1 class="text-center">Add CPS</h1>
 
-  <!-- Error Messages -->
   <div *ngIf="errorMessage" class="alert alert-danger">
     {{ errorMessage }}
   </div>
@@ -46,7 +46,6 @@
         class="form-control"
         required
       >
-        <!-- Use filteredProjects instead of projects -->
         <ng-container *ngFor="let project of filteredProjects">
           <option *ngIf="project.approved == true" [value]="project.id">
             {{ project.titre }} - Budget: {{ project.budget | currency }}
@@ -54,14 +53,9 @@
         </ng-container>
       </select>
     </div>
-
-
-
-    <!-- Submit Button -->
     <button type="submit" class="btn btn-primary">Add CPS</button>
   </form>
 
-  <!-- List of CPS -->
   <h2 class="text-center">List of CPS</h2>
   <table class="table table-bordered">
     <thead>
@@ -92,4 +86,4 @@
     </tbody>
   </table>
 </div>
-
+</div>

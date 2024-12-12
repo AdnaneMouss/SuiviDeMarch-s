@@ -36,7 +36,8 @@ export class LoginComponent {
           this.router.navigate(['/projectsEmployee']); // Redirect Employee
         } else if (response.type === 'Manager' || response.type === 'Director') {
           this.router.navigate(['/projects']); // Redirect Manager
-        } else {
+        }
+        else {
           this.errorMessage = 'Unknown user type. Contact administrator.';
         }
       },

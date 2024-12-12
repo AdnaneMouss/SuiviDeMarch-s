@@ -1,14 +1,26 @@
-/* General Container Styling */
+/* Global Styles for the Background */
+.page-container {
+  background: url("../../assets/bg-image.png"); /* Path to your image */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the image */
+  background-attachment: fixed; /* Fixed during scrolling */
+  background-repeat: no-repeat; /* No repeat */
+  min-height: 100vh; /* Ensure full viewport height */
+  padding: 20px; /* Space inside the container */
+}
+
+/* Inner Container Styling */
 .container {
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.8); /* Slight transparency */
 }
 
-/* Table Styling */
+/* Additional Styling for Forms, Tables, and Alerts */
+
 .table {
   width: 100%;
   border-collapse: collapse;
