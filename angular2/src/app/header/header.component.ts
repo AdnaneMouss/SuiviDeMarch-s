@@ -8,16 +8,18 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   userType: string | null = null;
+  userName: string | null = null;
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
-    this.userType = user?.type || null; // Extract user type
+    this.userType = user?.type || null;
+    this.userName = user?.nom || null;// Extract user type
   }
 
   logout(): void {
     localStorage.removeItem('user'); // Clear session
-    this.router.navigate(['/login']); // Redirect to login page
+    this.router.navigate(['/login']);
   }
 }

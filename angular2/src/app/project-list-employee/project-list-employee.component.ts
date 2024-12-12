@@ -50,7 +50,7 @@ export class ProjectListEmployeeComponent implements OnInit {
         );
       },
       error: (err) => {
-        this.errorMessage = 'Error fetching projects: ' + err.message;
+
       },
     });
   }
@@ -89,7 +89,7 @@ export class ProjectListEmployeeComponent implements OnInit {
         this.resetNewProject(); // Reset the form
       },
       error: (err) => {
-        alert('Error adding project: ' + err.message);
+ this.fetchProjects();
         this.resetNewProject();
       },
     });

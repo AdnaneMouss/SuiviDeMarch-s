@@ -1,15 +1,21 @@
 /* General Navbar Styling */
 .custom-navbar {
-  background-color: #333;
+  background-color: black; /* Darker background for better contrast */
   color: white;
   padding: 1rem 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for a modern look */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Helvetica Neue', Arial, sans-serif; /* Improved font */
+  transition: background-color 0.3s ease-in-out; /* Smooth background transition */
 }
 
+.custom-navbar:hover {
+  background-color: #34495e; /* Slightly lighter on hover */
+}
+
+/* Navbar Container Styling */
 .navbar-container {
   display: flex;
   justify-content: space-between;
@@ -20,27 +26,26 @@
 
 /* Brand Styling */
 .brand-logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #4CAF50;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white; /* Vibrant color for the brand */
   text-decoration: none;
+  letter-spacing: 1px; /* Letter spacing for a clean look */
+  transition: color 0.3s ease;
 }
 
-.brand-logo:hover {
-  color: #3c9c3f;
-}
 
 /* Navigation Menu Styling */
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2.5rem; /* More space between menu items */
 }
 
 .navbar-menu {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   margin: 0;
   padding: 0;
 }
@@ -52,142 +57,54 @@
 .navbar-menu a {
   text-decoration: none;
   color: white;
-  font-size: 1rem;
-  transition: color 0.3s ease;
+  font-size: 1.1rem; /* Slightly larger font for readability */
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 1rem; /* Added padding for better touch targets */
+  border-radius: 4px; /* Rounded corners for a modern look */
+  transition: all 0.3s ease;
 }
 
 .navbar-menu a:hover,
 .navbar-menu a.active {
-  color: #4CAF50;
+  color: blue;
+  font-weight: bold;/* Consistent color with the brand logo */
+  background-color: white; /* Subtle background on hover */
+  transform: scale(1.05); /* Slight scale effect on hover */
 }
 
 /* User Account Section */
 .account-menu {
   display: flex;
-  gap: 1.5rem;
-}
-
-.user-info {
-  font-size: 0.9rem;
-  font-style: italic;
-  color: #bbb;
-}
-
-.logout-link {
-  color: #ff6b6b;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-
-.logout-link:hover {
-  color: #ff3b3b;
-}
-
-/* Responsive Styling */
-@media (max-width: 768px) {
-  .custom-navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .navbar-links {
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-  }
-
-  .navbar-menu {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-}
-/* General Navbar Styling */
-.custom-navbar {
-  background-color: #333;
-  color: white;
-  padding: 1rem 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: 'Arial', sans-serif;
-}
-
-.navbar-container {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Brand Styling */
-.brand-logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #4CAF50;
-  text-decoration: none;
-}
-
-.brand-logo:hover {
-  color: #3c9c3f;
-}
-
-/* Navigation Menu Styling */
-.navbar-links {
-  display: flex;
-  align-items: center;
   gap: 2rem;
-}
-
-.navbar-menu {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-menu li {
-  display: inline-block;
-}
-
-.navbar-menu a {
-  text-decoration: none;
-  color: white;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-
-.navbar-menu a:hover,
-.navbar-menu a.active {
-  color: #4CAF50;
-}
-
-/* User Account Section */
-.account-menu {
-  display: flex;
-  gap: 1.5rem;
+  align-items: center;
 }
 
 .user-info {
-  font-size: 0.9rem;
-  font-style: italic;
-  color: #bbb;
-}
-
-.logout-link {
-  color: #ff6b6b;
-  text-decoration: none;
-  cursor: pointer;
   font-size: 1rem;
+  font-style: italic;
+  color: #bdc3c7; /* Softer gray for user info */
   transition: color 0.3s ease;
 }
 
+.user-info:hover {
+  color: #95a5a6; /* Change color slightly on hover */
+}
+
+.logout-link {
+  color: #e74c3c; /* Eye-catching red for logout */
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
 .logout-link:hover {
-  color: #ff3b3b;
+  color: #c0392b; /* Darker red on hover */
+  transform: scale(1.05); /* Slight scale effect on hover */
 }
 
 /* Responsive Styling */
@@ -195,16 +112,48 @@
   .custom-navbar {
     flex-direction: column;
     align-items: flex-start;
+    padding: 1rem;
   }
 
   .navbar-links {
     flex-direction: column;
     gap: 1rem;
     width: 100%;
+    margin-top: 1rem;
   }
 
   .navbar-menu {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.8rem;
+  }
+
+  .navbar-menu a {
+    padding: 0.8rem 1.2rem; /* Adjusted padding for touch screens */
+    font-size: 1.2rem;
+  }
+
+  .account-menu {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+}
+
+/* Mobile-first breakpoints */
+@media (max-width: 480px) {
+  .brand-logo {
+    font-size: 1.5rem; /* Adjust logo size for smaller screens */
+  }
+
+  .navbar-links {
+    gap: 1.5rem;
+  }
+
+  .navbar-menu a {
+    font-size: 1.1rem; /* Adjust font size for mobile screens */
+  }
+
+  .logout-link {
+    font-size: 1rem;
   }
 }

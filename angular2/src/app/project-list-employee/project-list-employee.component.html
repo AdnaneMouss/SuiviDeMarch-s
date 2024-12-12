@@ -29,7 +29,10 @@
               <td>{{ project.dateDebut | date: 'yyyy-MM-dd' }}</td>
               <td>{{ project.dateFin | date: 'yyyy-MM-dd' }}</td>
               <td>${{ project.budget }}</td>
-              <td>{{ project.approved ? 'Approved' : 'Pending' }}</td>
+              <td>
+                {{ project.approved === true ? 'Approved' : project.approved === false ? 'Disapproved' : 'Pending' }}
+              </td>
+
             </tr>
             </tbody>
           </table>
@@ -45,7 +48,7 @@
     <!-- Right content (Form) -->
     <div class="right-content">
       <h2>Add a New Project</h2>
-      <form (ngSubmit)="addProject()">
+      <form (ngSubmit)="addProject()" #projectForm="ngForm">
         <label for="titre">Title:</label>
         <input
           id="titre"
@@ -53,6 +56,7 @@
           [(ngModel)]="newProject.titre"
           name="titre"
           required
+          #titre="ngModel"
         />
 
         <label for="budget">Budget:</label>
@@ -62,6 +66,7 @@
           [(ngModel)]="newProject.budget"
           name="budget"
           required
+          #budget="ngModel"
         />
 
         <label for="dateDebut">Start Date:</label>
@@ -71,6 +76,7 @@
           [(ngModel)]="newProject.dateDebut"
           name="dateDebut"
           required
+          #dateDebut="ngModel"
         />
 
         <label for="dateFin">End Date:</label>
@@ -80,10 +86,12 @@
           [(ngModel)]="newProject.dateFin"
           name="dateFin"
           required
+          #dateFin="ngModel"
         />
 
-        <button type="submit">Add Project</button>
+        <button type="submit" [disabled]="projectForm.invalid">Add Project</button>
       </form>
+
     </div>
   </div>
 </div>

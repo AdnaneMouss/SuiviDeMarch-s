@@ -41,6 +41,7 @@ export class LoginComponent {
           this.errorMessage = 'Unknown user type. Contact administrator.';
         }
       },
+
       error: (error) => {
         console.error('Error occurred during login:', error); // Log error
         this.errorMessage = 'Invalid credentials, please try again.';

@@ -21,6 +21,7 @@ export class UserListComponent {
     projetsApprouvesIds: [],
     tachesIds: []
   };
+  passwordVisible = false;
 
   constructor(private userService: UserService) {
   }
@@ -35,7 +36,7 @@ export class UserListComponent {
         this.users = data;
       },
       error: (err) => {
-        this.errorMessage = 'Error fetching users: ' + err.message;
+
       },
     });
   }
@@ -48,7 +49,9 @@ export class UserListComponent {
         this.resetNewUser(); // Reset the form
       },
       error: (err) => {
-        alert('Error adding user: ' + err.message);
+        this.fetchUsers(); // Refresh the user list
+        this.resetNewUser();
+
       }
     });
   }
@@ -66,16 +69,21 @@ export class UserListComponent {
       tachesIds: []
     };
   }
-
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
+  }
   deleteUser(id: number): void {
     if (confirm(`Are you sure you want to delete the user with ID ${id}?`)) {
       this.userService.deleteUser(id).subscribe({
         next: () => {
+          this.fetchUsers(); // Refresh the user list
+          this.resetNewUser(); // Reset the form
           this.users = this.users.filter(user => user.id !== id);
           alert('User deleted successfully.');
         },
         error: (err) => {
-          alert('Error deleting user: ' + err.message);
+          this.fetchUsers(); // Refresh the user list
+          this.resetNewUser(); // Reset the form
         }
       });
     }

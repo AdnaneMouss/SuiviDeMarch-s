@@ -2,7 +2,7 @@
   <div class="navbar-container">
     <!-- Logo -->
     <div class="navbar-brand">
-      <a href="/" class="brand-logo">MY CLASSY APP</a>
+      <a href="/" class="brand-logo">Market Monitoring</a>
     </div>
 
     <!-- Navigation Links -->
@@ -19,7 +19,7 @@
       </ul>
 
       <!-- Manager Links -->
-      <ul *ngIf="userType === 'Chief'" class="navbar-menu">
+      <ul *ngIf="userType === 'Manager'" class="navbar-menu">
         <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
       </ul>
 
@@ -29,7 +29,7 @@
 
       <!-- User Account Links -->
       <ul class="navbar-menu account-menu">
-        <li><span class="user-info">Logged in as: {{ userType }}</span></li>
+        <li><span class="user-info">Logged in as: {{ userName }}</span></li>
         <li><a (click)="logout()" class="logout-link">Logout</a></li>
       </ul>
     </nav>

@@ -12,6 +12,7 @@ import { CpsComponent } from './cps-list/cps-list.component';
 import {RouterModule, RouterOutlet} from "@angular/router";
 import { ProjectListEmployeeComponent } from './project-list-employee/project-list-employee.component';
 import {AppRoutingModule} from "./app-routing.module";
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {AppRoutingModule} from "./app-routing.module";
     UserListComponent,
     HeaderComponent,
     CpsComponent,
-    ProjectListEmployeeComponent
+    ProjectListEmployeeComponent,
+    FooterComponent
   ],
     imports: [
         BrowserModule,

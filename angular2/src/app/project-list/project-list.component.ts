@@ -39,6 +39,7 @@ export class ProjectListComponent implements OnInit {
         }
       },
     });
+    this.fetchProjects();
   }
 
   disApproveProject(id: number): void {
@@ -51,6 +52,7 @@ export class ProjectListComponent implements OnInit {
         }
       },
     });
+    this.fetchProjects();
   }
 
 }
