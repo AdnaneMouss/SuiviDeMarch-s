@@ -8,10 +8,8 @@
         {{ errorMessage }}
       </div>
 
-      <h2>Your projects ideas status</h2>
-
       <div class="table-section">
-        <h2>My projects</h2>
+        <h2>My projects' ideas status</h2>
         <div *ngIf="filteredProjects && filteredProjects.length > 0; else noProjects">
           <table class="table table-bordered table-striped">
             <thead>
@@ -28,7 +26,7 @@
               <td>{{ project.titre }}</td>
               <td>{{ project.dateDebut | date: 'yyyy-MM-dd' }}</td>
               <td>{{ project.dateFin | date: 'yyyy-MM-dd' }}</td>
-              <td>${{ project.budget }}</td>
+              <td>{{ project.budget }}MAD</td>
               <td>
                 {{ project.approved === true ? 'Approved' : project.approved === false ? 'Disapproved' : 'Pending' }}
               </td>

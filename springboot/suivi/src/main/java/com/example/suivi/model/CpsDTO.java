@@ -11,6 +11,7 @@ public class CpsDTO {
     private Date startDate; // Start date of the associated project
     private Date endDate;
     private Double budget;
+    private String stack;
     private int projectId; // ID of the associated project
     private int proposeParId; // ID of the user who proposed
 
@@ -31,7 +32,7 @@ public class CpsDTO {
         this.proposeParId = proposeParId;
     }
     // Constructors
-    public CpsDTO(int id,Double budget, String nom, String tasks, String projectTitle, String proposeParName, Date startDate, Date endDate) {
+    public CpsDTO(int id,String stack, Double budget, String nom, String tasks, String projectTitle, String proposeParName, Date startDate, Date endDate) {
         this.id = id;
         this.nom = nom;
         this.tasks = tasks;
@@ -40,6 +41,7 @@ public class CpsDTO {
         this.startDate = startDate;
         this.endDate = endDate;
         this.budget=budget;
+        this.stack=stack;
     }
 
     public CpsDTO() {
@@ -53,6 +55,14 @@ public class CpsDTO {
         this.budget = budget;
     }
 
+    public String getStack() {
+        return stack;
+    }
+
+    public void setStack(String stack) {
+        this.stack = stack;
+    }
+
     // Constructor that converts a Cps entity to a DTO
     public CpsDTO(Cps cps) {
         this.id = cps.getId();
@@ -63,6 +73,7 @@ public class CpsDTO {
         this.startDate = cps.getProject_id() != null ? cps.getProject_id().getDateDebut() : null;
         this.endDate = cps.getProject_id() != null ? cps.getProject_id().getDateFin() : null;
         this.budget = cps.getProject_id() != null ? cps.getProject_id().getBudget() : null;
+        this.stack = cps.getStack();
     }
 
     // Getters and setters

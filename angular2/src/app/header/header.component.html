@@ -2,7 +2,10 @@
   <div class="navbar-container">
     <!-- Logo -->
     <div class="navbar-brand">
-      <a href="/" class="brand-logo">Market Monitoring</a>
+      <a href="/" class="brand-logo">
+        <img src="assets/logo.jpeg" class="logo-image">
+        Market Monitoring
+      </a>
     </div>
 
     <!-- Navigation Links -->
@@ -23,6 +26,7 @@
         <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
       </ul>
 
+      <!-- Director Links -->
       <ul *ngIf="userType === 'Director'" class="navbar-menu">
         <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
       </ul>

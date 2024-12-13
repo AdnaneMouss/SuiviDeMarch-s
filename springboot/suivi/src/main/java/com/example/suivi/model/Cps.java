@@ -11,7 +11,7 @@ public class Cps{
     private int id;
     private String nom;
     private String tasks;
-
+    private String stack;
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id")
     private Projet project_id;
@@ -22,12 +22,13 @@ public class Cps{
     public Cps() {
     }
 
-    public Cps(int id, String nom, String tasks, Projet project_id, Utilisateur utilisateur_id) {
+    public Cps(int id,String stack, String nom, String tasks, Projet project_id, Utilisateur utilisateur_id) {
         this.id = id;
         this.nom = nom;
         this.tasks = tasks;
         this.project_id = project_id;
         this.proposePar = utilisateur_id;
+        this.stack = stack;
     }
 
     public int getId() {
@@ -36,6 +37,14 @@ public class Cps{
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getStack() {
+        return stack;
+    }
+
+    public void setStack(String stack) {
+        this.stack = stack;
     }
 
     public String getNom() {

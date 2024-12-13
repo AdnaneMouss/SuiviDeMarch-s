@@ -35,6 +35,7 @@
         <label for="password">Password</label>
         <input type="password" id="password" class="form-control" [(ngModel)]="newUser.password" name="password" required
                minlength="6" #password="ngModel" />
+
         <div *ngIf="password.invalid && password.touched" class="text-danger">
           Password must be at least 6 characters long.
         </div>

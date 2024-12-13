@@ -71,6 +71,10 @@ export class UserListComponent {
   }
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
+    const passwordField = document.getElementById('password') as HTMLInputElement;
+    if (passwordField) {
+      passwordField.type = this.passwordVisible ? 'text' : 'password';
+    }
   }
   deleteUser(id: number): void {
     if (confirm(`Are you sure you want to delete the user with ID ${id}?`)) {

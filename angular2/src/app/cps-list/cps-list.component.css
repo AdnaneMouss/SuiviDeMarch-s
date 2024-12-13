@@ -118,6 +118,67 @@ button {
   transition: background-color 0.3s;
 }
 
+/* General Button Styling */
+/* General Button Styling (Same as before) */
+.custom-btn {
+  font-size: 14px; /* Adjust text size */
+  padding: 8px 20px; /* Adjust padding for better appearance */
+  border-radius: 30px; /* Rounded corners */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+  text-transform: uppercase; /* Uppercase text */
+  font-weight: bold; /* Bold text */
+  border: none; /* Remove border */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Delete Button Styling */
+.delete-btn {
+  background-color: #dc3545; /* Danger color (red) */
+  color: white; /* Text color */
+}
+
+.delete-btn:hover {
+  background-color: #c82333; /* Darker red on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Disabled Button (if needed) */
+.btn[disabled] {
+  opacity: 0.6; /* Make disabled buttons less opaque */
+  cursor: not-allowed; /* Change cursor to indicate button is disabled */
+}
+
+
+/* Text Button Styling */
+.txt-btn {
+  background-color: #17a2b8; /* Info color */
+  color: white; /* Text color */
+}
+
+.txt-btn:hover {
+  background-color: #138496; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* PDF Button Styling */
+.pdf-btn {
+  background-color: #28a745; /* Success color */
+  color: white; /* Text color */
+}
+
+.pdf-btn:hover {
+  background-color: #218838; /* Darker green on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Disabled Button (if needed) */
+.btn[disabled] {
+  opacity: 0.6; /* Make disabled buttons less opaque */
+  cursor: not-allowed; /* Change cursor to indicate button is disabled */
+}
+
+
+
 button:hover {
   background-color: #0056b3;
 }

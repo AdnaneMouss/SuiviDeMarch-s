@@ -1,3 +1,4 @@
+/* General Navbar Styling */
 .page-container {
   background: url("../../assets/bg-image.png"); /* Replace with your image URL */
   background-size: cover; /* Ensures the image covers the entire page */
@@ -7,10 +8,10 @@
   min-height: 100vh; /* Ensures the container covers the entire viewport height */
   padding: 20px; /* Adds some padding inside the container */
 }
+
 .login-container {
   max-width: 400px;
-  margin-top: 160px;
-  margin-left: 500px;
+  margin: 160px auto; /* Center the login form in the viewport */
   padding: 2rem;
   background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
   backdrop-filter: blur(10px); /* Blurs the background behind the table */
@@ -19,6 +20,19 @@
   text-align: center;
   font-family: 'Arial', sans-serif;
 }
+
+/* Logo Styling */
+.logo-container {
+  margin-bottom: 1.5rem; /* Adds spacing below the logo */
+}
+
+.logoo {
+  width: 100px; /* Adjust the size */
+  height: 100px;
+  object-fit: contain; /* Ensures logo maintains aspect ratio */
+}
+
+/* Header Styling */
 .login-container h2 {
   font-size: 2rem;
   font-weight: bold;
@@ -98,6 +112,11 @@
 
   .login-container h2 {
     font-size: 1.75rem;
+  }
+
+  .logoo{
+    height: 60px;
+    width:60px;
   }
 
   .form-group input, .btn {

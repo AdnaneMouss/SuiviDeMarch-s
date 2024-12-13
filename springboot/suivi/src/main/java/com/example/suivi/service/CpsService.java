@@ -39,7 +39,7 @@ public class CpsService {
         // Map basic fields from DTO to entity
         cps.setNom(cpsDTO.getNom());
         cps.setTasks(cpsDTO.getTasks());
-
+cps.setStack(cpsDTO.getStack());
         // Retrieve and set associated project
         Optional<Projet> project = projetRepository.findById(cpsDTO.getProjectId());
         if (project.isPresent()) {

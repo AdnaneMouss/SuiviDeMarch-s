@@ -31,9 +31,17 @@
   color: white; /* Vibrant color for the brand */
   text-decoration: none;
   letter-spacing: 1px; /* Letter spacing for a clean look */
+  display: flex;
+  align-items: center; /* Align logo and text vertically */
   transition: color 0.3s ease;
 }
 
+/* Logo Image Styling */
+.brand-logo img {
+  width: 40px; /* Adjust size */
+  height: auto;
+  margin-right: 10px; /* Space between logo and text */
+}
 
 /* Navigation Menu Styling */
 .navbar-links {
